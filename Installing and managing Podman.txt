@@ -1,0 +1,452 @@
+login as: prafful
+prafful@192.168.29.238's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Thu Feb 22 09:01:56 2024
+[prafful@MyLinuxVM ~]$
+[prafful@MyLinuxVM ~]$ pwd
+/home/prafful
+[prafful@MyLinuxVM ~]$ cd professional-scripts/
+[prafful@MyLinuxVM professional-scripts]$ ls -ltr archive_project
+-rwxrwxr-x. 1 prafful prafful 601 Feb 22 09:41 archive_project
+[prafful@MyLinuxVM professional-scripts]$ date
+Thu Feb 22 09:47:56 IST 2024
+[prafful@MyLinuxVM professional-scripts]$ crontab -e
+crontab: installing new crontab
+[prafful@MyLinuxVM professional-scripts]$ crontab -l
+55 09 * * * /home/prafful/professional-scripts/archive_project
+[prafful@MyLinuxVM professional-scripts]$
+login as: prafful
+prafful@192.168.29.238's password:
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Last login: Thu Feb 22 09:46:55 2024 from 192.168.29.87
+[prafful@MyLinuxVM ~]$
+[prafful@MyLinuxVM ~]$
+[prafful@MyLinuxVM ~]$ su -
+Password:
+[root@MyLinuxVM ~]# yum install podman -y
+Last metadata expiration check: 1:04:21 ago on Fri 23 Feb 2024 10:33:27 AM IST.
+Package podman-3:4.8.3-1.module_el8+804+f131391c.x86_64 is already installed.
+Dependencies resolved.
+=============================================================================================================================================================
+ Package                              Architecture               Version                                                 Repository                     Size
+=============================================================================================================================================================
+Upgrading:
+ podman                               x86_64                     3:4.9.2-1.module_el8+899+3d7192e3                       appstream                      16 M
+ podman-catatonit                     x86_64                     3:4.9.2-1.module_el8+899+3d7192e3                       appstream                     371 k
+ podman-plugins                       x86_64                     3:4.9.2-1.module_el8+899+3d7192e3                       appstream                     1.3 M
+
+Transaction Summary
+=============================================================================================================================================================
+Upgrade  3 Packages
+
+Total download size: 18 M
+Downloading Packages:
+(1/3): podman-plugins-4.9.2-1.module_el8+899+3d7192e3.x86_64.rpm                                                             1.3 MB/s | 1.3 MB     00:01
+(2/3): podman-catatonit-4.9.2-1.module_el8+899+3d7192e3.x86_64.rpm                                                           350 kB/s | 371 kB     00:01
+(3/3): podman-4.9.2-1.module_el8+899+3d7192e3.x86_64.rpm                                                                     3.3 MB/s |  16 MB     00:04
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                        3.3 MB/s |  18 MB     00:05
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                     1/1
+  Running scriptlet: podman-plugins-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                             1/1
+  Upgrading        : podman-plugins-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                             1/6
+  Upgrading        : podman-catatonit-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                           2/6
+  Upgrading        : podman-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                                     3/6
+  Running scriptlet: podman-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                                     4/6
+  Cleanup          : podman-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                                     4/6
+  Cleanup          : podman-catatonit-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                           5/6
+  Cleanup          : podman-plugins-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                             6/6
+  Running scriptlet: podman-plugins-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                             6/6
+  Verifying        : podman-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                                     1/6
+  Verifying        : podman-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                                     2/6
+  Verifying        : podman-catatonit-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                           3/6
+  Verifying        : podman-catatonit-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                           4/6
+  Verifying        : podman-plugins-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                                                                             5/6
+  Verifying        : podman-plugins-3:4.8.3-1.module_el8+804+f131391c.x86_64                                                                             6/6
+
+Upgraded:
+  podman-3:4.9.2-1.module_el8+899+3d7192e3.x86_64                              podman-catatonit-3:4.9.2-1.module_el8+899+3d7192e3.x86_64
+  podman-plugins-3:4.9.2-1.module_el8+899+3d7192e3.x86_64
+
+Complete!
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# alias docker=podman
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker -V
+Error: unknown shorthand flag: 'V' in -V
+See 'podman --help'
+[root@MyLinuxVM ~]# docker -v
+podman version 4.9.3-dev
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker info
+host:
+  arch: amd64
+  buildahVersion: 1.33.5
+  cgroupControllers:
+  - cpuset
+  - cpu
+  - cpuacct
+  - blkio
+  - memory
+  - devices
+  - freezer
+  - net_cls
+  - perf_event
+  - net_prio
+  - hugetlb
+  - pids
+  - rdma
+  cgroupManager: systemd
+  cgroupVersion: v1
+  conmon:
+    package: conmon-2.1.10-1.module_el8+804+f131391c.x86_64
+    path: /usr/bin/conmon
+    version: 'conmon version 2.1.10, commit: 246632edcb9e493ac978de9bf3b69e65                                                                                f71f4743'
+  cpuUtilization:
+    idlePercent: 99.65
+    systemPercent: 0.18
+    userPercent: 0.17
+  cpus: 1
+  databaseBackend: sqlite
+  distribution:
+    distribution: centos
+    version: "8"
+  eventLogger: file
+  freeLocks: 2048
+  hostname: MyLinuxVM
+  idMappings:
+    gidmap: null
+    uidmap: null
+  kernel: 4.18.0-536.el8.x86_64
+  linkmode: dynamic
+  logDriver: k8s-file
+  memFree: 161148928
+  memTotal: 1865187328
+  networkBackend: cni
+  networkBackendInfo:
+    backend: cni
+    dns:
+      package: podman-plugins-4.9.2-1.module_el8+899+3d7192e3.x86_64
+      path: /usr/libexec/cni/dnsname
+      version: |-
+        CNI dnsname plugin
+        version: 1.4.0-dev
+        commit: unknown
+        CNI protocol versions supported: 0.1.0, 0.2.0, 0.3.0, 0.3.1, 0.4.0, 1                                                                                .0.0
+    package: containernetworking-plugins-1.4.0-1.module_el8+804+f131391c.x86_                                                                                64
+    path: /usr/libexec/cni
+  ociRuntime:
+    name: runc
+    package: runc-1.1.11-1.module_el8+804+f131391c.x86_64
+    path: /usr/bin/runc
+    version: |-
+      runc version 1.1.11
+      spec: 1.0.2-dev
+      go: go1.21.3
+      libseccomp: 2.5.2
+  os: linux
+  pasta:
+    executable: ""
+    package: ""
+    version: ""
+  remoteSocket:
+    exists: false
+    path: /run/podman/podman.sock
+  security:
+    apparmorEnabled: false
+    capabilities: CAP_NET_RAW,CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_FOWNER,CAP_FSETI                                                                                D,CAP_KILL,CAP_NET_BIND_SERVICE,CAP_SETFCAP,CAP_SETGID,CAP_SETPCAP,CAP_SETUID                                                                                ,CAP_SYS_CHROOT
+    rootless: false
+    seccompEnabled: true
+    seccompProfilePath: /usr/share/containers/seccomp.json
+    selinuxEnabled: true
+  serviceIsRemote: false
+  slirp4netns:
+    executable: /usr/bin/slirp4netns
+    package: slirp4netns-1.2.2-1.module_el8+804+f131391c.x86_64
+    version: |-
+      slirp4netns version 1.2.2
+      commit: 0ee2d87523e906518d34a6b423271e4826f71faf
+      libslirp: 4.4.0
+      SLIRP_CONFIG_VERSION_MAX: 3
+      libseccomp: 2.5.2
+  swapFree: 1251954688
+  swapTotal: 2176839680
+  uptime: 20h 49m 18.00s (Approximately 0.83 days)
+  variant: ""
+plugins:
+  authorization: null
+  log:
+  - k8s-file
+  - none
+  - passthrough
+  - journald
+  network:
+  - bridge
+  - macvlan
+  - ipvlan
+  volume:
+  - local
+registries:
+  search:
+  - registry.access.redhat.com
+  - registry.redhat.io
+  - docker.io
+store:
+  configFile: /etc/containers/storage.conf
+  containerStore:
+    number: 0
+    paused: 0
+    running: 0
+    stopped: 0
+  graphDriverName: overlay
+  graphOptions:
+    overlay.mountopt: nodev,metacopy=on
+  graphRoot: /var/lib/containers/storage
+  graphRootAllocated: 18465423360
+  graphRootUsed: 7196913664
+  graphStatus:
+    Backing Filesystem: xfs
+    Native Overlay Diff: "false"
+    Supports d_type: "true"
+    Supports shifting: "false"
+    Supports volatile: "true"
+    Using metacopy: "true"
+  imageCopyTmpDir: /var/tmp
+  imageStore:
+    number: 0
+  runRoot: /run/containers/storage
+  transientStore: false
+  volumePath: /var/lib/containers/storage/volumes
+version:
+  APIVersion: 4.9.3-dev
+  Built: 1707212668
+  BuiltTime: Tue Feb  6 15:14:28 2024
+  GitCommit: ""
+  GoVersion: go1.21.3
+  Os: linux
+  OsArch: linux/amd64
+  Version: 4.9.3-dev
+
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker search nginx
+NAME                                                          DESCRIPTION
+registry.access.redhat.com/ubi8/nginx-120                     Platform for ru                                                                                nning nginx 1.20 or building...
+registry.access.redhat.com/ubi8/nginx-118                     Platform for ru                                                                                nning nginx 1.18 or building...
+registry.access.redhat.com/ubi9/nginx-120                     rhcc_registry.a                                                                                ccess.redhat.com_ubi9/nginx-1...
+registry.access.redhat.com/ubi8/nginx-122                     rhcc_registry.a                                                                                ccess.redhat.com_ubi8/nginx-1...
+registry.access.redhat.com/ubi9/nginx-122                     rhcc_registry.a                                                                                ccess.redhat.com_ubi9/nginx-1...
+registry.access.redhat.com/rhscl/nginx-18-rhel7               Nginx 1.8 serve                                                                                r and a reverse proxy server
+registry.access.redhat.com/rhscl/nginx-112-rhel7              Nginx is a web                                                                                 server and a reverse proxy se...
+registry.access.redhat.com/rhscl/nginx-110-rhel7              Nginx container                                                                                 image that delivers an nginx...
+registry.access.redhat.com/rhscl/nginx-16-rhel7               Nginx 1.6 serve                                                                                r and a reverse proxy server
+registry.access.redhat.com/rhscl/nginx-114-rhel7              Nginx is a web                                                                                 server and a reverse proxy se...
+registry.access.redhat.com/ubi7/nginx-118                     Platform for ru                                                                                nning nginx 1.18 or building...
+registry.access.redhat.com/ubi7/nginx-120                     Platform for ru                                                                                nning nginx 1.20 or building...
+registry.access.redhat.com/3scale-amp23/apicast-gateway       3scale's API ga                                                                                teway (APIcast) is an OpenRe...
+registry.access.redhat.com/3scale-amp20/apicast-gateway       3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+registry.access.redhat.com/rhamp10/apicast-gateway            3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+registry.access.redhat.com/3scale-amp20-beta/apicast-gateway  3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+registry.access.redhat.com/3scale-amp25/apicast-gateway       3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+registry.access.redhat.com/3scale-amp21/apicast-gateway       3scale AMP imag                                                                                e used for API gateway
+registry.access.redhat.com/3scale-amp24/apicast-gateway       No description
+registry.access.redhat.com/rhmap47/wildcard-proxy             RHMAP image tha                                                                                t provides mapping and proxy...
+registry.access.redhat.com/rhmap45/wildcard-proxy             RHMAP image tha                                                                                t provides mapping and proxy...
+registry.access.redhat.com/rhmap44/wildcard-proxy             RHMAP Docker im                                                                                age that provides mapping and...
+registry.access.redhat.com/rhmap46/wildcard-proxy             RHMAP image tha                                                                                t provides mapping and proxy...
+registry.access.redhat.com/rhmap43/wildcard-proxy             RHMAP Docker im                                                                                age that provides mapping and...
+registry.access.redhat.com/3scale-amp22/apicast-gateway       APIcast API gat                                                                                eway needs connection to the...
+registry.redhat.io/rhel8/nginx-114                            Nginx is a web                                                                                 server and a reverse proxy se...
+registry.redhat.io/rhel8/nginx-118                            Platform for ru                                                                                nning nginx 1.18 or building...
+registry.redhat.io/ubi8/nginx-120                             Platform for ru                                                                                nning nginx 1.20 or building...
+registry.redhat.io/rhel9/nginx-120                            rhcc_registry.a                                                                                ccess.redhat.com_rhel9/nginx-...
+registry.redhat.io/rhel8/nginx-122                            rhcc_registry.a                                                                                ccess.redhat.com_rhel8/nginx-...
+registry.redhat.io/rhel8/nginx-116                            Platform for ru                                                                                nning nginx 1.16 or building...
+registry.redhat.io/ubi8/nginx-118                             Platform for ru                                                                                nning nginx 1.18 or building...
+registry.redhat.io/rhel8/nginx-120                            Platform for ru                                                                                nning nginx 1.20 or building...
+registry.redhat.io/ubi9/nginx-120                             rhcc_registry.a                                                                                ccess.redhat.com_ubi9/nginx-1...
+registry.redhat.io/ubi8/nginx-122                             rhcc_registry.a                                                                                ccess.redhat.com_ubi8/nginx-1...
+registry.redhat.io/rhel9/nginx-122                            rhcc_registry.a                                                                                ccess.redhat.com_rhel9/nginx-...
+registry.redhat.io/ubi9/nginx-122                             rhcc_registry.a                                                                                ccess.redhat.com_ubi9/nginx-1...
+registry.redhat.io/rhscl/nginx-18-rhel7                       Nginx 1.8 serve                                                                                r and a reverse proxy server
+registry.redhat.io/rhscl/nginx-112-rhel7                      Nginx is a web                                                                                 server and a reverse proxy se...
+registry.redhat.io/rhscl/nginx-114-rhel7                      Nginx is a web                                                                                 server and a reverse proxy se...
+registry.redhat.io/rhscl/nginx-110-rhel7                      Nginx container                                                                                 image that delivers an nginx...
+registry.redhat.io/rhscl/nginx-16-rhel7                       Nginx 1.6 serve                                                                                r and a reverse proxy server
+registry.redhat.io/rhscl/nginx-116-rhel7                      Platform for ru                                                                                nning nginx 1.16 or building...
+registry.redhat.io/rhscl/nginx-118-rhel7                      Platform for ru                                                                                nning nginx 1.18 or building...
+registry.redhat.io/ubi7/nginx-118                             Platform for ru                                                                                nning nginx 1.18 or building...
+registry.redhat.io/rhscl/nginx-120-rhel7                      Platform for ru                                                                                nning nginx 1.20 or building...
+registry.redhat.io/ubi7/nginx-120                             Platform for ru                                                                                nning nginx 1.20 or building...
+registry.redhat.io/3scale-amp23/apicast-gateway               3scale's API ga                                                                                teway (APIcast) is an OpenRe...
+registry.redhat.io/3scale-amp20/apicast-gateway               3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+registry.redhat.io/rhamp10/apicast-gateway                    3scale's API ga                                                                                teway (APIcast) is an OpenRes...
+docker.io/library/nginx                                       Official build                                                                                 of Nginx.
+docker.io/library/unit                                        Official build                                                                                 of NGINX Unit: Universal Web...
+docker.io/nginx/nginx-ingress                                 NGINX and  NGIN                                                                                X Plus Ingress Controllers fo...
+docker.io/nginxinc/nginx-unprivileged                         Unprivileged NG                                                                                INX Dockerfiles
+docker.io/nginx/nginx-prometheus-exporter                     NGINX Prometheu                                                                                s Exporter for NGINX and NGIN...
+docker.io/nginxinc/nginx-s3-gateway                           Authenticating                                                                                 and caching gateway based on...
+docker.io/nginx/unit                                          This repository                                                                                 is retired, use the Docker o...
+docker.io/nginx/nginx-ingress-operator                        NGINX Ingress O                                                                                perator for NGINX and NGINX P...
+docker.io/nginxinc/amplify-agent                              NGINX Amplify A                                                                                gent docker repository
+docker.io/nginx/nginx-quic-qns                                NGINX QUIC inte                                                                                rop
+docker.io/nginxinc/ingress-demo                               Ingress Demo
+docker.io/nginxproxy/nginx-proxy                              Automated nginx                                                                                 proxy for Docker containers...
+docker.io/nginxproxy/acme-companion                           Automated ACME                                                                                 SSL certificate generation fo...
+docker.io/bitnami/nginx                                       Bitnami nginx D                                                                                ocker Image
+docker.io/bitnami/nginx-ingress-controller                    Bitnami Docker                                                                                 Image for NGINX Ingress Contr...
+docker.io/ubuntu/nginx                                        Nginx, a high-p                                                                                erformance reverse proxy & we...
+docker.io/nginxproxy/docker-gen                               Generate files                                                                                 from docker container meta-da...
+docker.io/nginxinc/nginmesh_proxy_debug
+docker.io/nginxinc/mra-fakes3
+docker.io/kasmweb/nginx                                       An Nginx image                                                                                 based off nginx:alpine and in...
+docker.io/rancher/nginx-ingress-controller
+docker.io/nginxinc/nginmesh_proxy_init
+docker.io/nginxinc/mra_python_base
+docker.io/nginxinc/ngx-rust-tool
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker images
+REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker pull nginx
+✔ docker.io/library/nginx:latest
+Trying to pull docker.io/library/nginx:latest...
+Getting image source signatures
+Copying blob c7f80e9cdab2 done   |
+Copying blob e1caac4eb9d2 done   |
+Copying blob 88f6f236f401 done   |
+Copying blob c3ea3344e711 done   |
+Copying blob cc1bb4345a3a done   |
+Copying blob da8fa4352481 done   |
+Copying blob 18a869624cb6 done   |
+Copying config e4720093a3 done   |
+Writing manifest to image destination
+e4720093a3c1381245b53a5a51b417963b3c4472d3f47fc301930a4f3b17666a
+[root@MyLinuxVM ~]# docker images
+REPOSITORY               TAG         IMAGE ID      CREATED     SIZE
+docker.io/library/nginx  latest      e4720093a3c1  8 days ago  191 MB
+[root@MyLinuxVM ~]# docker run docker.io/library/nginx
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to pe                                                                                rform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-de                                                                                fault.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/con                                                                                f.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/c                                                                                onf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-template                                                                                s.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processe                                                                                s.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2024/02/23 06:34:19 [notice] 1#1: using the "epoll" event method
+2024/02/23 06:34:19 [notice] 1#1: nginx/1.25.4
+2024/02/23 06:34:19 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14)
+2024/02/23 06:34:19 [notice] 1#1: OS: Linux 4.18.0-536.el8.x86_64
+2024/02/23 06:34:19 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/02/23 06:34:19 [notice] 1#1: start worker processes
+2024/02/23 06:34:19 [notice] 1#1: start worker process 28
+^C2024/02/23 06:34:56 [notice] 1#1: signal 2 (SIGINT) received, exiting
+2024/02/23 06:34:56 [notice] 28#28: exiting
+2024/02/23 06:34:56 [notice] 28#28: exit
+2024/02/23 06:34:56 [notice] 1#1: signal 17 (SIGCHLD) received from 28
+2024/02/23 06:34:56 [notice] 1#1: worker process 28 exited with code 0
+2024/02/23 06:34:56 [notice] 1#1: exit
+[root@MyLinuxVM ~]# docker run -d docker.io/library/nginx
+1b7ac83c5e9b362b0a0ae979d0696dc9809811ad9f618e614f5d60121f832291
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED                                                                                         STATUS         PORTS       NAMES
+1b7ac83c5e9b  docker.io/library/nginx:latest  nginx -g daemon o...  19 second                                                                                s ago  Up 19 seconds              ecstatic_clarke
+[root@MyLinuxVM ~]# ifconfig | more
+cni-podman0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.88.0.1  netmask 255.255.0.0  broadcast 10.88.255.255
+        inet6 fe80::9019:a7ff:fe1f:ded3  prefixlen 64  scopeid 0x20<link>
+        ether 92:19:a7:1f:de:d3  txqueuelen 1000  (Ethernet)
+        RX packets 18  bytes 1168 (1.1 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 51  bytes 6206 (6.0 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.29.238  netmask 255.255.255.0  broadcast 192.168.29.255
+        inet6 fe80::a00:27ff:fe70:13ab  prefixlen 64  scopeid 0x20<link>
+        inet6 2405:201:5c0b:3115:a00:27ff:fe70:13ab  prefixlen 64  scopeid 0x
+0<global>
+        ether 08:00:27:70:13:ab  txqueuelen 1000  (Ethernet)
+        RX packets 276979  bytes 321132518 (306.2 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 110116  bytes 10785619 (10.2 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 21  bytes 1104 (1.0 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 21  bytes 1104 (1.0 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth26daeee1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::4478:6aff:fecb:5993  prefixlen 64  scopeid 0x20<link>
+        ether 46:78:6a:cb:59:93  txqueuelen 0  (Ethernet)
+        RX packets 11  bytes 822 (822.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 37  bytes 4112 (4.0 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:6b:81:64  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@MyLinuxVM ~]# docker run -dt -p 8080:80/tcp docker.io/library/nginx
+88615946c86b14ea2c18760f84f130111d5447ff36e0b31766b04880db1f58f0
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED                                                                                         STATUS         PORTS                 NAMES
+1b7ac83c5e9b  docker.io/library/nginx:latest  nginx -g daemon o...  9 minutes                                                                                 ago   Up 9 minutes                         ecstatic_clarke
+88615946c86b  docker.io/library/nginx:latest  nginx -g daemon o...  21 second                                                                                s ago  Up 22 seconds  0.0.0.0:8080->80/tcp  brave_curran
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker stop 1b7ac83c5e9b
+1b7ac83c5e9b
+[root@MyLinuxVM ~]# docker stop 88615946c86b
+88615946c86b
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker run -dt -p 8080:80/tcp docker.io/library/ngin                                                                                     x
+31edbc5bcbd39b7a6c8b9c1fcfe8c091d6d629988fc92f5079929271d32754c6
+[root@MyLinuxVM ~]# docker run -dt -p 8082:80/tcp docker.io/library/ngin                                                                                     x
+50c4b2fcc3e19b413985d48e9ba25ecd4fb664bfe5abe8cfb52e267d47500217
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE                           COMMAND               CREA                                                                                     TED         STATUS         PORTS                 NAMES
+31edbc5bcbd3  docker.io/library/nginx:latest  nginx -g daemon o...  12 s                                                                                     econds ago  Up 13 seconds  0.0.0.0:8080->80/tcp  elated_mendeleev
+50c4b2fcc3e1  docker.io/library/nginx:latest  nginx -g daemon o...  3 se                                                                                     conds ago   Up 4 seconds   0.0.0.0:8082->80/tcp  strange_dubinsky
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# docker run -d --name nginx-container1 docker.io/library/nginx                                                                            ef20a64965ffbf06ee8800adae230e2944a15dd4aee6eede7c20c8a08dbedbd7
+[root@MyLinuxVM ~]# ps
+    PID TTY          TIME CMD
+  24705 pts/1    00:00:00 su
+  24709 pts/1    00:00:00 bash
+  62636 pts/1    00:00:00 ps
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS        PORTS                 NAMES
+31edbc5bcbd3  docker.io/library/nginx:latest  nginx -g daemon o...  9 minutes ago  Up 9 minutes  0.0.0.0:8080->80/tcp  elated_mendeleev
+50c4b2fcc3e1  docker.io/library/nginx:latest  nginx -g daemon o...  9 minutes ago  Up 9 minutes  0.0.0.0:8082->80/tcp  strange_dubinsky
+ef20a64965ff  docker.io/library/nginx:latest  nginx -g daemon o...  9 seconds ago  Up 9 seconds                        nginx-container1
+[root@MyLinuxVM ~]# docker stop nginx-container1
+nginx-container1
+[root@MyLinuxVM ~]# docker ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS        PORTS                 NAMES
+31edbc5bcbd3  docker.io/library/nginx:latest  nginx -g daemon o...  9 minutes ago  Up 9 minutes  0.0.0.0:8080->80/tcp  elated_mendeleev
+50c4b2fcc3e1  docker.io/library/nginx:latest  nginx -g daemon o...  9 minutes ago  Up 9 minutes  0.0.0.0:8082->80/tcp  strange_dubinsky
+[root@MyLinuxVM ~]#
