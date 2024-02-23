@@ -1,0 +1,64 @@
+[root@MyLinuxVM ~]#
+[root@MyLinuxVM ~]# echo "Lets create a basic python app"
+Lets create a basic python app
+[root@MyLinuxVM ~]# mkdir myimage
+[root@MyLinuxVM ~]# cd myimage/
+[root@MyLinuxVM myimage]# vi app.py
+[root@MyLinuxVM myimage]# cat app.py
+print ("Hey Buddy!")
+[root@MyLinuxVM myimage]# python3 -V
+Python 3.6.8
+[root@MyLinuxVM myimage]# python3 app.py
+Hey Buddy!
+[root@MyLinuxVM myimage]# vi Dockerfile
+[root@MyLinuxVM myimage]# cat Dockerfile
+#This is a Dockerfile
+
+From python:3.8
+WORKDIR /app
+COPY . .
+CMD ["python", "aap.py"]
+[root@MyLinuxVM myimage]# docker build -t myimage:1.0 .
+STEP 1/4: FROM python:3.8
+Resolved "python" as an alias (/etc/containers/registries.conf.d/000-shor                                                                                    tnames.conf)
+Trying to pull docker.io/library/python:3.8...
+Getting image source signatures
+Copying blob 4532b04ec8f7 done   |
+Copying blob 4532b04ec8f7 done   |
+Copying blob 7bb465c29149 done   |
+Copying blob 2b9b41aaa3c5 done   |
+Copying blob 49b40be4436e done   |
+Copying blob c558fac597f8 [===============>----------------------] 82.2MiB / 201.3MiB | 72.5 KiB/s
+Copying blob 11402150a57e done   |
+Copying blob 4df0efb76c10 done   |
+Copying blob 951fd003e72c done   |
+WARN[1998] Failed, retrying in 2s ... (1/3). Error: copying system image from manifest list: writing blob: storing blob to file "/var/tmp/container_images_storage3097101023/5": happened during read: read tcp [2405:201:5c0b:3115:a00:27ff:fe70:13ab]:46200->[2606:4700:90c2:7823:18a8:b93:6810:64cf]:443: read: connection timed out
+Getting image source signatures
+Copying blob 7bb465c29149 skipped: already exists
+Copying blob 2b9b41aaa3c5 skipped: already exists
+Copying blob 49b40be4436e skipped: already exists
+Copying blob 4532b04ec8f7 done   |
+Copying blob c558fac597f8 done   |
+Copying blob 11402150a57e done   |
+Copying blob 4df0efb76c10 done   |
+Copying blob 951fd003e72c done   |
+Copying config e88393a58f done   |
+Writing manifest to image destination
+STEP 2/4: WORKDIR /app
+--> 333851efbf1e
+STEP 3/4: COPY . .
+--> e7a33b4d7c88
+STEP 4/4: CMD ["python", "aap.py"]
+COMMIT myimage:1.0
+--> c951d975c52a
+Successfully tagged localhost/myimage:1.0
+c951d975c52ad02ab4a84d8728c6196070fd347e1ccd51d3f3c9b95c438882b6
+[root@MyLinuxVM myimage]#
+[root@MyLinuxVM myimage]# docker images
+REPOSITORY                TAG         IMAGE ID      CREATED         SIZE
+localhost/myimage         1.0         c951d975c52a  51 seconds ago  1.02 GB
+docker.io/library/nginx   latest      e4720093a3c1  8 days ago      191 MB
+docker.io/library/python  3.8         e88393a58f95  2 weeks ago     1.02 GB
+[root@MyLinuxVM myimage]#
+[root@MyLinuxVM myimage]#
+
